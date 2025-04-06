@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artigo: Tutorial Completo de CSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Tutorial Completo de CSS</h1>
+    <p>Aprenda CSS do Básico ao Avançado</p>
+  </header>
+
+  <nav>
+    <a href="#introducao">Introdução</a>
+    <a href="#basico">Básico</a>
+    <a href="#avancado">Avançado</a>
+    <a href="#boas-praticas">Boas Práticas</a>
+    <a href="#extras">Extras</a>
+  </nav>
+
+  <main>
+    <section id="introducao">
+      <h2>Introdução</h2>
+      <p>CSS (Cascading Style Sheets) é uma linguagem de estilo usada para definir a aparência de páginas web. Ele
+        trabalha junto com o HTML para criar sites visualmente atraentes e responsivos.</p>
+    </section>
+
+    <section id="basico">
+      <article id="seletores-article">
+        <h2>Seletores</h2>
+        <p>Seletores em CSS definem quais elementos do HTML você quer estilizar. O CSS básico envolve entender
+          como selecionar elementos e aplicar estilos.</p>
+        <h3>Tipos principais de seletores:</h3>
+        <ul>
+          <li>
+            <p>Tag ( h1, p, button, etc. )</p>
+          </li>
+          <li>
+            <p>Classe ( .meu-estilo )</p>
+          </li>
+          <li>
+            <p>ID ( #meu-id )</p>
+          </li>
+          <li>
+            <p>Atributo ( [type="text"] )</p>
+          </li>
+          <li>
+            <p>Combinadores (descendentes, adjacentes, filhos)</p>
+          </li>
+          <li>
+            <p>Pseudo-classes ( :hover, :focus )</p>
+          </li>
+          <li>
+            <p>Pseudo-elementos ( ::before, ::after )</p>
+          </li>
+        </ul>
+        <h4>
+          Exemplo do uso de seletores:
+        </h4>
+        <pre><code>
+        /* Seletor de tag */
+        h1 {
+          color: blue;
+        }
+        
+        /* Seletor de classe */
+        .titulo {
+          font-weight: bold;
+        }
+        
+        /* Seletor de ID */
+        #principal {
+          padding: 20px;
+        }
+        
+        /* Seletor de atributo */
+        input[type="text"] {
+          border: 1px solid gray;
+        }
+        
+        /* Combinadores */
+        div p {
+          color: gray; /* Todo &lt;p&gt; dentro de &lt;div&gt; */
+        }
+        </code></pre>
+        <blockquote>
+          <ul>
+            <li>
+              <p>Prefira classes para aplicar estilos, pois IDs têm maior "peso" e dificultam manutenção.</p>
+            </li>
+            <li>
+              <p>Evite seletores genéricos (tipo div div div) que tornam o CSS confuso.</p>
+            </li>
+            <li>
+              <p> Use pseudo-classes para estados (hover, focus, active) e interações.</p>
+            </li>
+          </ul>
+        </blockquote>
+      </article>
+
+      <article id="classe-vs-id-article">
+        <h2>Classes e ID: diferenças e recomendações</h2>
+        <p>Classes são reutilizáveis e podem ser aplicadas a vários elementos. IDs são únicos e devem ser usados apenas
+          uma
+          vez por página. Recomenda-se usar classes para estilização e IDs para JavaScript.</p>
+        <h3>Exemplo de uso:</h3>
+        <h4>HTML:</h4>
+        <pre><code>
+        &lt;div&gt; class="card destaque">&lt;/div&gt;
+        &lt;div&gt; id="banner">&lt;/div&gt;
+        </code></pre>
+        <h4>CSS:</h4>
+        <pre><code>
+          .card {
+            background-color: white;
+          }
+          .destaque {
+            border: 2px solid gold;
+          }
+          #banner {
+            height: 300px;
+          }
+      </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>Use classes para a maioria das estilizações.</li>
+          <li>Reserve IDs apenas para casos especiais (âncoras, JavaScript).</li>
+          <li>Evite misturar ID e classe em muitos estilos — isso complica a especificidade do CSS.</li>
+        </ul>
+        <blockquote>IDs são ruins em CSS extensivo porque eles têm prioridade alta na cascata. Isso atrapalha
+          sobreposições e customizações futuras.</blockquote>
+      </article>
+      <article id="div-vs-span-article">
+        <h2>Tags Div e Span: diferenças e recomendações</h2>
+        <p>A tag <strong>div</strong> é um contêiner de bloco, enquanto a tag <strong>span</strong> é um
+          contêiner em linha. Use <strong>div</strong> para seções e <strong>span</strong> para partes de
+          texto.</p>
+        <h3>Exemplo de uso:</h3>
+        <h4>HTML:</h4>
+        <pre><code> &lt;div&gt; class="container">
+          &lt;p&gt;Texto dentro de uma div.&lt;/p&gt;
+          &lt;/div&gt;
+        
+          &lt;p&gt;Este é um &lt;span&gt; class="destaque">texto destacado&lt;/span&gt; dentro de um parágrafo.&lt;/p&gt;
+        </code></pre>
+        <h4>CSS:</h4>
+        <pre><code>.container {
+          padding: 20px;
+          background-color: #f0f0f0;
+        }
+        
+        .destaque {
+          color: red;
+          font-weight: bold;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>Use <strong>div</strong> para seções maiores e agrupamentos.</li>
+          <li>Use <strong>span</strong> para estilizar partes de texto.</li>
+          <li>Evite usar <strong>div</strong> para tudo — isso pode deixar o HTML confuso. Prefira usar semântica
+            (section, article, header, nav) sempre que possível.</li>
+          <blockquote>
+            <p>Tags semânticas melhoram SEO e acessibilidade!
+              Quando precisar de um <strong>div</strong> para um menu de navegação, em alternativa, use a tag
+              <strong>nav</strong>:
+            </p>
+          </blockquote>
+      </article>
+      <article id="borda-article">
+        <h2>Bordas</h2>
+        <p>As bordas são linhas ao redor de elementos. São usadas para definir limites visuais. Você pode personalizar a
+          cor, estilo e
+          espessura.</p>
+        <h3>Propriedades principais:</h3>
+        <ul>
+          <li>
+            <p><strong>border-width</strong> (largura)</p>
+          </li>
+          <li>
+            <p><strong>border-style</strong> (estilo)</p>
+          </li>
+          <li>
+            <p><strong>border-color</strong> (cor)</p>
+          </li>
+          <li>
+            <p><strong>border-radius</strong> (cantos arredondados)</p>
+          </li>
+        </ul>
+        <h4>Exemplo:</h4>
+        <pre><code>.caixa {
+          border: 2px solid #333;
+          border-radius: 10px;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use bordas para destacar elementos importantes.</p>
+          </li>
+          <li>
+            <p>Use border-radius para criar botões arredondados modernos.</p>
+          </li>
+          <li>
+            <p>Use cores que contrastem com o fundo, mas que não sejam muito agressivas.</p>
+          </li>
+          <li>
+            <p>Para apenas um lado da borda, use:</p>
+            <pre><code>border-bottom: 1px solid black; /* apenas a parte de baixo */
+              </code></pre>
+
+            <pre><code>border-top: 1px solid black; /* apenas a parte de cima */
+               </code></pre>
+
+            <pre><code>border-left: 1px solid black; /* apenas a parte da esquerda */
+              </code></pre>
+
+            <pre><code>border-right: 1px solid black; /* apenas a parte da direita */
+             </code></pre>
+          </li>
+        </ul>
+        <h3>Uma Alternativa</h3>
+        <p>Em vez de usar border para separadores internos, você também pode usar <strong>box-shadow</strong> para
+          efeitos mais suaves.
+          Use <strong>box-shadow</strong> para criar sombras ao redor de elementos, dando um efeito de profundidade.</p>
+        <h4>Exemplo:</h4>
+        <pre><code>.caixa {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        } 
+        </code></pre>
+      </article>
+      <article id="fontes-cores-article">
+        <h2>Fontes e Cores</h2>
+        
+      </article>
+    </section>
+
+
+
+    <section id="extras">
+      <h2>Extras</h2>
+      <p>Quer se aprofundar ainda mais? Confira esses recursos:</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">Documentação MDN CSS</a></li>
+        <li><a href="https://css-tricks.com/" target="_blank">CSS Tricks</a></li>
+        <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy (Jogo Interativo)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <button id="topBtn" onclick="topFunction()">↑</button>
+
+  <footer>
+    <p>Artigo de estudo criado por [Seu Nome]</p>
+  </footer>
+
+  <script>
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+
+</html>
