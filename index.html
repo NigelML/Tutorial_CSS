@@ -24,13 +24,13 @@
   </nav>
 
   <main>
-    <section id="introducao">
+    <section id="introducao-section">
       <h2>Introdução</h2>
       <p>CSS (Cascading Style Sheets) é uma linguagem de estilo usada para definir a aparência de páginas web. Ele
         trabalha junto com o HTML para criar sites visualmente atraentes e responsivos.</p>
     </section>
 
-    <section id="basico">
+    <section id="basico-section">
       <article id="seletores-article">
         <h2>Seletores</h2>
         <p>Seletores em CSS definem quais elementos do HTML você quer estilizar. O CSS básico envolve entender
@@ -142,14 +142,16 @@
           texto.</p>
         <h3>Exemplo de uso:</h3>
         <h4>HTML:</h4>
-        <pre><code> &lt;div&gt; class="container">
-          &lt;p&gt;Texto dentro de uma div.&lt;/p&gt;
+        <pre><code>
+          &lt;div&gt; class="container">
+            &lt;p&gt;Texto dentro de uma div.&lt;/p&gt;
           &lt;/div&gt;
-        
+
           &lt;p&gt;Este é um &lt;span&gt; class="destaque">texto destacado&lt;/span&gt; dentro de um parágrafo.&lt;/p&gt;
         </code></pre>
         <h4>CSS:</h4>
-        <pre><code>.container {
+        <pre><code>
+        .container {
           padding: 20px;
           background-color: #f0f0f0;
         }
@@ -193,7 +195,8 @@
           </li>
         </ul>
         <h4>Exemplo:</h4>
-        <pre><code>.caixa {
+        <pre><code>
+        .caixa {
           border: 2px solid #333;
           border-radius: 10px;
         }
@@ -229,15 +232,234 @@
           efeitos mais suaves.
           Use <strong>box-shadow</strong> para criar sombras ao redor de elementos, dando um efeito de profundidade.</p>
         <h4>Exemplo:</h4>
-        <pre><code>.caixa {
+        <pre><code>
+        .caixa {
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         } 
         </code></pre>
       </article>
       <article id="fontes-cores-article">
         <h2>Fontes e Cores</h2>
-        
+        <h3>Fontes</h3>
+        <p>As fontes são essenciais para a legibilidade. Você pode usar fontes do sistema ou importar fontes externas.
+        </p>
+        <h4>Propriedades principais:</h4>
+        <ul>
+          <li>
+            <p><strong>font-family</strong> (família)</p>
+          </li>
+          <li>
+            <p><strong>font-size</strong> (tamanho)</p>
+          </li>
+          <li>
+            <p><strong>font-weight</strong> (peso)</p>
+          </li>
+          <li>
+            <p><strong>line-height</strong> (altura da linha)</p>
+          </li>
+          <li>
+            <p><strong>text-align</strong> (alinhamento)</p>
+          </li>
+        </ul>
+        <h4>Exemplo:</h4>
+        <pre><code>
+        body {
+          font-family: 'Arial', sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        </code></pre>
+        <h3>Cores</h3>
+        <p>As cores são fundamentais para o design. Você pode usar nomes de cores, códigos hexadecimais ou RGB.</p>
+        <h4>Propriedades principais:</h4>
+        <ul>
+          <li>
+            <p><strong>color</strong> (cor do texto)</p>
+          </li>
+          <li>
+            <p><strong>background-color</strong> (cor de fundo)</p>
+          </li>
+          <li>
+            <p><strong>opacity</strong> (opacidade)</p>
+          </li>
+        </ul>
+        <h4>Exemplo</h4>
+        <pre><code>
+        h1 {
+          color: #3498db; /* Azul */
+        }
+        section {
+          background-color: #f9f9f9;
+        }
+        </code></pre>
+        <h4>Formas de definir cores:</h4>
+        <ul>
+          <li><strong>Hexadecimal</strong>: #3498db</li>
+          <li><strong>RGB</strong>: rgb(52, 152, 219)</li>
+          <li><strong>RGBA</strong>: rgba(52, 152, 219, 0.5)</li>
+          <li><strong>HSL</strong>: hsl(204, 70%, 53%)</li>
+          <li><strong>HSLA</strong>: hsla(204, 70%, 53%, 0.5)</li>
+        </ul>
       </article>
+    </section>
+
+    <section id="intermediario-section">
+      <article id="box-model-article">
+        <h2>Box Model</h2>
+        <p>O Box Model define como os elementos HTML são representados como caixas retangulares. Cada elemento é
+          composto de:</p>
+        <ul>
+          <li><strong>Content</strong>: O conteúdo real do elemento.</li>
+          <li><strong>Padding</strong>: Espaço entre o conteúdo e a borda.</li>
+          <li><strong>Border</strong>: A borda ao redor do padding.</li>
+          <li><strong>Margin</strong>: Espaço fora da borda, separando o elemento de outros.</li>
+        </ul>
+        <h3>Visualmente</h3>
+        <pre><code>
+          [Margin]
+            [Border]
+              [Padding]
+                <strong>[Content]</strong>
+              [Padding]
+            [Border]
+          [Margin]
+        </code></pre>
+        <h4>Exemplo</h4>
+        <pre><code>
+        .caixa {
+          width: 200px;
+          height: 100px;
+          padding: 20px;
+          border: 2px solid #333;
+          margin: 10px;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <p>Sempre que puder, use a regra:</p>
+        <pre><code>
+          * {
+            box-sizing: border-box;
+          }
+          </code></pre>
+        <p>Assim o width inclui padding e border no cálculo automático, evitando confusão.</p>
+        <blockquote>
+          O uso de <strong>box-sizing: border-box</strong> é praticamente padrão em projetos atuais. Isso evita
+          problemas de layout e torna o CSS mais previsível. Ao definir a largura de um elemento, o padding e a borda
+          são incluídos no cálculo, evitando surpresas indesejadas.
+        </blockquote>
+      </article>
+      <article id="float-article">
+        <h2>Elementos Flutuantes (float)</h2>
+        <p>float era usado para alinhar elementos na esquerda ou direita (tipo textos ao redor de imagens).</p>
+        <h4>Exemplo</h4>
+        <pre><code>
+          .imagem {
+            float: left;
+            margin-right: 10px;
+          }
+        </code></pre>
+        <h4>Problemas</h4>
+        <ul>
+          <li>
+            <p>Float tira o elemento do fluxo normal da página.</p>
+          </li>
+          <li>
+            <p>Problemas de "colapso" de containers (altura fica 0).</p>
+          </li>
+        </ul>
+        <h4>Solução (Clearfix):</h4>
+        <pre><code>
+          .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Evite usar float para layout moderno.</p>
+          </li>
+          <li>
+            <p>Prefira Flexbox ou Grid que são mais poderosos e controláveis.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Float hoje é usado apenas para casos muito específicos (tipo fazer texto contornar imagens pequenas).
+        </blockquote>
+      </article>
+      <article id="posicionamento-article">
+        <h2>Posicionamento</h2>
+        <p>Controla como um elemento é posicionado na página.</p>
+        <h3>Tipos</h3>
+        <ul>
+          <li><strong>static</strong>: Padrão, sem posicionamento especial.</li>
+          <li><strong>relative</strong>: Posiciona em relação à posição original.</li>
+          <li><strong>absolute</strong>: Posiciona em relação ao elemento pai mais próximo com posição diferente de
+            static.</li>
+          <li><strong>fixed</strong>: Fixa na tela, mesmo ao rolar a página.</li>
+          <li><strong>sticky</strong>: Mistura fixed e relative, fixa após rolagem.</li>
+        </ul>
+        <h4>Exemplo</h4>
+        <pre><code>
+          .caixa {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+          }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use relative para pequenos ajustes.</p>
+          </li>
+          <li>
+            <p>Use absolute para posicionar elementos em relação a outros.</p>
+          </li>
+          <li>
+            <p>Use fixed para menus ou cabeçalhos fixos.</p>
+          </li>
+          <li>
+            <p>Evite usar float para layout moderno.</p>
+          </li>
+          <li>
+            <p>sticky é perfeito para menus que "grudam" no topo ao rolar.</p>
+          </li>
+        </ul>
+        <blockquote>
+          position: sticky é muito usado atualmente para cabeçalhos, barras de navegação e sidebars.
+        </blockquote>
+      </article>
+      <article id="inline-block-article"></article>
+      <h2>Elementos Inline, Block, Inline-Block</h2>
+      <ul>
+        <li><strong>Inline</strong>: Não quebra linha, só ocupa o espaço necessário. Ex: span, a.</li>
+        <li><strong>Block</strong>: Quebra linha, ocupa toda a largura disponível. Ex: div, p.</li>
+        <li><strong>Inline-Block</strong>: Combina os dois, permite definir largura e altura, mas não quebra linha.
+        </li>
+      </ul>
+      <h4>Exemplo</h4>
+      <pre><code>
+        .caixa {
+          display: inline-block;
+          width: 200px;
+          height: 100px;
+        }
+        </code></pre>
+      <h3>Recomendações</h3>
+      <ul>
+        <li>
+          <p>Use inline-block para criar botões, badges ou elementos lado a lado que precisam de controle de tamanho.
+          </p>
+        </li>
+        <li>
+          <p>Prefira usar Flexbox para controle de alinhamento mais poderoso em layouts modernos.</p>
+        </li>
+      </ul>
+      <blockquote>
+        Em muitos casos onde se usava inline-block, hoje é melhor usar Flexbox (display: flex).
+      </blockquote>
+
     </section>
 
 
