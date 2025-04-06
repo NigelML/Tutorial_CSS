@@ -18,7 +18,8 @@
   <nav>
     <a href="#introducao">Introdução</a>
     <a href="#basico">Básico</a>
-    <a href="#avancado">Avançado</a>
+    <a href="#intermediario-section">Intermediário</a>
+    <a href="#avancado-section">Avançado</a>
     <a href="#boas-praticas">Boas Práticas</a>
     <a href="#extras">Extras</a>
   </nav>
@@ -283,7 +284,7 @@
             <p><strong>opacity</strong> (opacidade)</p>
           </li>
         </ul>
-        <h4>Exemplo</h4>
+        <h4>Exemplo:</h4>
         <pre><code>
         h1 {
           color: #3498db; /* Azul */
@@ -324,7 +325,7 @@
             [Border]
           [Margin]
         </code></pre>
-        <h4>Exemplo</h4>
+        <h4>Exemplo:</h4>
         <pre><code>
         .caixa {
           width: 200px;
@@ -351,7 +352,7 @@
       <article id="float-article">
         <h2>Elementos Flutuantes (float)</h2>
         <p>float era usado para alinhar elementos na esquerda ou direita (tipo textos ao redor de imagens).</p>
-        <h4>Exemplo</h4>
+        <h4>Exemplo:</h4>
         <pre><code>
           .imagem {
             float: left;
@@ -400,7 +401,7 @@
           <li><strong>fixed</strong>: Fixa na tela, mesmo ao rolar a página.</li>
           <li><strong>sticky</strong>: Mistura fixed e relative, fixa após rolagem.</li>
         </ul>
-        <h4>Exemplo</h4>
+        <h4>Exemplo:</h4>
         <pre><code>
           .caixa {
             position: absolute;
@@ -438,7 +439,7 @@
         <li><strong>Inline-Block</strong>: Combina os dois, permite definir largura e altura, mas não quebra linha.
         </li>
       </ul>
-      <h4>Exemplo</h4>
+      <h4>Exemplo:</h4>
       <pre><code>
         .caixa {
           display: inline-block;
@@ -460,8 +461,372 @@
         Em muitos casos onde se usava inline-block, hoje é melhor usar Flexbox (display: flex).
       </blockquote>
 
-    </section>
+      <article id="formatando-links-article">
+        <h2>Formatando Links</h2>
+        <p>Links (&lt;a&gt;) têm estados diferentes que podem ser estilizados.</p>
+        <h3>Estados principais:</h3>
+        <ul>
+          <li><strong>:link</strong>: Link normal.</li>
+          <li><strong>:visited</strong>: Link visitado.</li>
+          <li><strong>:hover</strong>: Quando o mouse passa por cima.</li>
+          <li><strong>:active</strong>: Quando o link é clicado.</li>
+          <li><strong>:focus</strong>: Quando o link recebe foco (ex: tab).</li>
+        </ul>
+        <h4>Exemplo:</h4>
+        <pre><code>
+        a {
+          color: blue;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          text-decoration: underline;
+        }
+        
+        a:visited {
+          color: purple;
+        }
+        
+        a:active {
+          color: red;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Remova text-decoration se quiser um link sem sublinhado.</p>
+          </li>
+          <li>
+            <p>Sempre destaque links no :hover para melhor acessibilidade.</p>
+          </li>
+          <li>
+            <p>Mantenha boa diferença visual entre links normais e visitados.</p>
+          </li>
+        </ul>
+      </article>
+      <article id="css-externo-article">
+        <h2>CSS Externo e Dividido em Partes Menores</h2>
+        <p>Colocar CSS em arquivos externos ao invés de no HTML diretamente.</p>
+        <h4>Exemplo:</h4>
+        <pre><code>
+        &lt;link rel="stylesheet" href="style.css"&gt;
+        </code></pre>
+        <p>Dividir em partes = usar vários arquivos CSS, cada um com uma responsabilidade:</p>
+        <ul>
+          <li>
+            <p><strong>reset.css</strong> → limpar estilos padrões dos navegadores.</p>
+          </li>
+          <li>
+            <p><strong>layout.css</strong> → definir o layout geral do site.</p>
+          </li>
+          <li>
+            <p><strong>components.css</strong> → estilizar componentes específicos.</p>
+          </li>
+          <li>
+            <p><strong>theme.css</strong> → definir cores e temas.</p>
+          </li>
+          <li>
+            <p><strong>responsive.css</strong> → definir estilos responsivos.</p>
+          </li>
+        </ul>
 
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use CSS externo para manter o HTML limpo e separado.</p>
+          </li>
+          <li>
+            <p>Divida o CSS em partes menores para facilitar a manutenção.</p>
+          </li>
+          <li>
+            <p>Prefira usar organização tipo:</p>
+            <pre><code>
+            /css
+              ├── base/
+              │    ├── reset.css
+              │    └── typography.css
+              ├── components/
+              │    ├── buttons.css
+              │    ├── cards.css
+              └── main.css
+            </code></pre>
+          </li>
+        </ul>
+        <blockquote>
+          Frameworks como Sass ou PostCSS ajudam a organizar e juntar tudo em um único arquivo final, otimizando o
+          carregamento.
+        </blockquote>
+      </article>
+    </section>
+    <section id="avancado-section">
+      <article id="flexbox-article">
+        <h2>Flexbox</h2>
+        <p>Flexbox é um modelo de layout que facilita o alinhamento e distribuição de espaço entre itens em um
+          contêiner.
+          É ideal para layouts unidimensionais (linha ou coluna).</p>
+        <h3>Propriedades principais:</h3>
+        <ul>
+          <li><strong>display: flex</strong>: Ativa o modo flex no contêiner.</li>
+          <li><strong>flex-direction</strong>: Define a direção dos itens (row, column).</li>
+          <li><strong>justify-content</strong>: Alinha os itens ao longo do eixo principal.</li>
+          <li><strong>align-items</strong>: Alinha os itens ao longo do eixo transversal.</li>
+          <li><strong>flex-wrap</strong>: Permite que os itens quebrem para a próxima linha.</li>
+          <li><strong>align-content</strong>: Alinha linhas inteiras quando há espaço extra.</li>
+          <li><strong>flex-grow</strong>: Define como os itens crescem para preencher o espaço disponível.</li>
+          <li><strong>flex-shrink</strong>: Define como os itens encolhem quando o espaço é reduzido.</li>
+          <li><strong>flex-basis</strong>: Define o tamanho inicial de um item antes do espaço extra ser distribuído.
+          </li>
+          <li><strong>align-self</strong>: Permite que um item específico tenha um alinhamento diferente.</li>
+        </ul>
+        <h4>Exemplo:</h4>
+        <pre><code>
+        .container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use para layouts de linha ou coluna simples.</p>
+          </li>
+          <li>
+            <p>Para coisas como: menus, galerias, painéis, áreas centrais.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Flexbox é hoje indispensável. Estável e suportado em todos os navegadores modernos.
+        </blockquote>
+      </article>
+      <article id="grid-layout-article">
+        <h2>Grid Layout</h2>
+        <p>CSS Grid é um sistema de layout bidimensional (linha + coluna) muito poderoso.</p>
+        <h3>Propriedades principais:</h3>
+        <ul>
+          <li><strong>display: grid</strong>: Ativa o modo grid no contêiner.</li>
+          <li><strong>grid-template-columns</strong>: Define as colunas do grid.</li>
+          <li><strong>grid-template-rows</strong>: Define as linhas do grid.</li>
+          <li><strong>grid-gap</strong>: Define o espaço entre os itens do grid.</li>
+          <li><strong>grid-area</strong>: Define a área ocupada por um item no grid.</li>
+          <li><strong>grid-column</strong>: Define a posição de um item nas colunas.</li>
+          <li><strong>grid-row</strong>: Define a posição de um item nas linhas.</li>
+          <li><strong>grid-template-areas</strong>: Define áreas nomeadas no grid.</li>
+        </ul>
+        <h4>Exemplo:</h4>
+        <pre><code>
+        .container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 10px;
+        }
+        .item1 {
+          grid-column: 1 / 3;
+          grid-row: 1 / 2;
+        }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use quando precisar de áreas complexas (tipo dashboard, blog, sites responsivos com colunas).</p>
+          </li>
+          <li>
+            <p>Use "fr" que significa “fração do espaço disponível”.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Grid é muito usado em conjunto com Flexbox. Não é "um ou outro" — cada um serve pra algo diferente!
+        </blockquote>
+      </article>
+      <article id="media-queries-article">
+        <h2>Media Queries (Responsividade)</h2>
+        <p>Media queries permitem aplicar estilos diferentes com base em condições como largura da tela, orientação,
+          resolução, etc.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>
+          @media (max-width: 768px) {
+            .menu {
+              flex-direction: column;
+            }
+          }
+        </code></pre>
+        <h3>Recomendações</h3>]
+        <ul>
+          <li>
+            <p>Sempre pense Mobile First (fazer o layout para telas pequenas primeiro).</p>
+          </li>
+          <li>
+            <p>Use breakpoints comuns como: 576px, 768px, 992px, 1200px.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Também existem novas media queries de container (@container), mas ainda estão em adoção gradual(2025).
+        </blockquote>
+      </article>
+      <article id="variaveis-css-article">
+        <h2>Variáveis CSS (Custom Properties)</h2>
+        <p>Variáveis CSS permitem armazenar valores reutilizáveis em todo o CSS.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>
+          :root {
+            --cor-principal: #3498db;
+          }
+          
+          .botao {
+            background-color: var(--cor-principal);
+          }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use para cores, espaçamentos, fontes.</p>
+          </li>
+          <li>
+            <p>Deixa o código mais organizado e fácil de mudar temas.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Com variáveis + media queries, você consegue até temas dinâmicos (modo claro/escuro sem JS!).
+        </blockquote>
+      </article>
+
+      <article id="animacoes-article">
+        <h2>Animações e Transições</h2>
+        <p>Permite criar movimentos suaves quando o estado de um elemento muda.</p>
+        <h3>Propriedades principais:</h3>
+        <ul>
+          <li><strong>transition</strong>: Define a duração e o tipo de transição.</li>
+          <li><strong>transform</strong>: Aplica transformações como translate, rotate, scale.</li>
+          <li><strong>animation</strong>: Define animações complexas com keyframes.</li>
+        </ul>
+        <h4>Exemplo (transição):</h4>
+        <pre><code>
+          .botao {
+            background-color: blue;
+            transition: background-color 0.3s ease;
+          }
+          
+          .botao:hover {
+            background-color: green;
+          }
+        </code></pre>
+        <h4>Exemplo (animação):</h4>
+        <pre><code>
+          @keyframes deslizar {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+          }
+          
+          .caixa {
+            animation: deslizar 0.5s ease-out;
+          }
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Transições para pequenas interações (hover, focus, etc).</p>
+          </li>
+          <li>
+            <p>Animações para efeitos mais elaborados (entradas, saídas).</p>
+          </li>
+        </ul>
+        <blockquote>
+          Animações pesadas? Prefira animar propriedades como transform e opacity para desempenho.
+        </blockquote>
+      </article>
+      <article id="pseudo-elementos-article">
+        <h2>Pseudo-elementos e Pseudo-classes avançadas</h2>
+        <p>Pseudo-elementos permitem estilizar partes específicas de um elemento.</p>
+        <h3>Exemplo de Pseudo-elemento:</h3>
+        <pre><code>
+          .titulo::after {
+            content: "🔥";
+            margin-left: 5px;
+          }
+          /* Adiciona um ícone após o título */
+        </code></pre>
+        <h3>Exemplo de Pseudo-classe:</h3>
+        <pre><code>
+          input:focus {
+            border-color: blue;
+          }
+          /* Altera a borda do input quando está em foco */
+        </code></pre>                 
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use para melhorar a interação e a estética.</p>
+          </li>
+          <li>
+            <p>::before, ::after, :hover, :focus, :nth-child(), :not(), etc.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Pseudo-classes novas como :is() e :where() ajudam a simplificar seletores complexos!
+        </blockquote>
+      </article>
+      <article id="pre-processadores-article">
+        <h2>Pré-processadores (SASS)</h2>
+        <p>Pré-processadores como SASS e LESS permitem escrever CSS de forma mais poderosa.</p>
+        <p>SASS é uma extensão do CSS que adiciona recursos como:</p>
+        <ul>
+          <li><strong>Variáveis</strong>: Armazena valores reutilizáveis.</li>
+          <li><strong>Aninhamento</strong>: Permite aninhar seletores.</li>
+          <li><strong>Mixins</strong>: Reutiliza blocos de código.</li>
+          <li><strong>Funções</strong>: Cria funções personalizadas.</li>
+          <li><strong>Partials</strong>: Divide o CSS em arquivos menores.</li>
+          <li><strong>Import</strong>: Importa arquivos SASS.</li>
+        </ul>
+        <h3>Exemplo:</h3>
+        <pre><code>
+          $cor-principal: #3498db;
+
+          .botao {
+            background-color: $cor-principal;
+            &:hover {
+              background-color: darken($cor-principal, 10%);
+            }
+          }          
+        </code></pre>
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use SASS para projetos grandes e complexos.</p>
+          </li>
+          <li>
+            <p>Organize o CSS em partes menores usando partials.</p>
+          </li>
+        </ul>
+        <blockquote>
+          Muitas ferramentas já aceitam SCSS diretamente (como o Vite, por exemplo).
+        </blockquote>
+      </article>
+      <article id="dark-mode-article">
+        <h2>Dark Mode com CSS</h2>
+        <p>Dark Mode é uma opção de tema escuro que reduz o brilho da tela e melhora a legibilidade.
+          Permite mudar o tema da página dependendo da preferência do usuário ou um botão.</p>
+        <h3>Exemplo com preferências do sistema:</h3>
+        <pre><code>
+          @media (prefers-color-scheme: dark) {
+            body {
+              background-color: #222;
+              color: #fff;
+            }
+          }          
+        </code></pre>]
+        <h3>Recomendações</h3>
+        <ul>
+          <li>
+            <p>Use variáveis CSS para facilitar a troca de temas.</p>
+          </li>
+          <li>
+            <p>Ou adicione uma classe dark-mode dinamicamente com JS para ter mais controle.</p>
+          </li>
+        </ul>
+
+      </article>
+    </section>
 
 
     <section id="extras">
