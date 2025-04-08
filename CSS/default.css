@@ -1,0 +1,14 @@
+:root{    
+    --primary-color: #4f46e5;
+    --secondary-color: #6366f1;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --text-secundary-color: white;    
+    --hover-color: #d1d5db;
+
+    --code-area-bg: #e0e7ff;
+    --blockquote-bg: #eef2ff;
+
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box ;
+}

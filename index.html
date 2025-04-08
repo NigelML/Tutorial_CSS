@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artigo: Revisão Completa de CSS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">  
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="CSS/default.css">
+  <link rel="stylesheet" href="CSS/component.css">
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
@@ -15,13 +18,53 @@
     <p>Revise CSS do Básico ao Avançado</p>
   </header>
 
-  <nav>
-    <a href="#introducao">Introdução</a>
-    <a href="#basico">Básico</a>
-    <a href="#intermediario-section">Intermediário</a>
-    <a href="#avancado-section">Avançado</a>   
-    <a href="#extras">Extras</a>
+  <nav class="menu-navigation">
+    <ul>
+      <li>
+        <a href="#introducao-section">Introdução</a>
+      </li>
+      <li class="dropdown-menu">
+        <a>Básico  <span class="arrow">▼</span></a>
+        <div class="dropdown-content">
+          <a href="#seletores-article">Seletores</a>
+          <a href="classe-vs-id-article">Classes vs IDs</a>
+          <a href="#div-vs-span-article">Div vs Span</a>
+          <a href="#borda-article">Bordas</a>
+          <a href="#fontes-cores-article">Fontes e Cores</a>
+        </div>
+
+      </li>
+      <li class="dropdown-menu">
+        <a>Intermediário <span class="arrow">▼</span></a>
+        <div class="dropdown-content">
+          <a href="#box-model-article">Box Model</a>
+          <a href="#float-article">Float</a>
+          <a href="#posicionamento-article">Posicionamento</a>
+          <a href="#inline-block-article">Inline/Block, Inline-Block</a>
+          <a href="#formatando-links-article">Formatando Links</a>
+          <a href="#css-externo-article">CSS Externo</a>
+        </div>
+      </li>
+      <li class="dropdown-menu">
+        <a>Avançado <span class="arrow">▼</span></a>
+        <div class="dropdown-content">
+          <a href="#flexbox-article">Flexbox</a>
+          <a href="#grid-layout-article">Grid Layout</a>
+          <a href="#media-queries-article">Media Queries</a>
+          <a href="#variaveis-css-article">Variáveis CSS</a>
+          <a href="#animacoes-article">Animações e Transições</a>
+          <a href="#pseudo-elementos-article">Pseudo-elementos/classes</a>
+          <a href="#pre-processadores-article">Pré Pré-processadores</a>
+          <a href="#dark-mode-article">Dark Mode</a>
+        </div>
+      </li>
+      <li>
+        <a href="#extras">Extras</a>
+      </li>
+    </ul>
+
   </nav>
+
 
   <main>
     <section id="introducao-section">
@@ -740,10 +783,10 @@
         <h3>Exemplo de Pseudo-elemento:</h3>
         <pre><code>
           .titulo::after {
-            content: "🔥";
+            content: "novo elemento";
             margin-left: 5px;
           }
-          /* Adiciona um ícone após o título */
+          /* Adiciona uma frase após o título */
         </code></pre>
         <h3>Exemplo de Pseudo-classe:</h3>
         <pre><code>
@@ -751,7 +794,7 @@
             border-color: blue;
           }
           /* Altera a borda do input quando está em foco */
-        </code></pre>                 
+        </code></pre>
         <h3>Recomendações</h3>
         <ul>
           <li>
@@ -841,8 +884,9 @@
   <button id="topBtn" onclick="topFunction()">↑</button>
 
   <footer>
-    <p>Artigo de estudo criado por Nigel Mendes de Lima</p>
+    <p>Criado por <a href="https://github.com/NigelML" target="_blank" rel="noopener noreferrer">NigelML</a></p>
   </footer>
+  
 
   <script>
     let topBtn = document.getElementById("topBtn");
@@ -857,6 +901,11 @@
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
+    document.querySelectorAll('.dropdown-menu > a').forEach(item => {
+    item.addEventListener('click', function() {
+      this.parentElement.classList.toggle('active');
+    });
+  });
   </script>
 </body>
 
