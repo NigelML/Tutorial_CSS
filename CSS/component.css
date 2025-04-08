@@ -5,6 +5,7 @@
 .dropdown-content a {
     display: block;
     padding: 0.5rem 1rem;
+    cursor: pointer;
 }
 
 @media (min-width: 900px) {
@@ -44,8 +45,7 @@
     .menu-navigation a {
         display: block;
         padding: 10px;
-        text-decoration: none;
-        cursor: pointer;
+        text-decoration: none;        
     }
 
     .dropdown-content {
